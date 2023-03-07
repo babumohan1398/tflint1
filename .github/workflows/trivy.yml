@@ -18,25 +18,15 @@ jobs:
       contents: read # for actions/checkout to fetch code
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
     name: Build
-    runs-on: "ubuntu-18.04"
+    runs-on: "ubuntu-22.04"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         
-#       - name: Install Hadolint
-#         run: |
-#           curl -sL -o hadolint "https://github.com/hadolint/hadolint/releases/download/v2.7.0/hadolint-Linux-x86_64"
-#           chmod +x hadolint
           
       - uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: Dockerfile
           failure-threshold: info
-          
-      -
-        name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          push: false
-          tags: docker.io/my-organization/my-app:${{ github.sha }}
+
           
