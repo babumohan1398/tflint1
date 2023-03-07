@@ -31,7 +31,7 @@ jobs:
       - uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: Dockerfile
-          fail_on: failure-threshold info
+          failure-threshold: info
           
       -
         name: Build and push
