@@ -22,7 +22,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
+        
+#       - name: Install Hadolint
+#         run: |
+#           curl -sL -o hadolint "https://github.com/hadolint/hadolint/releases/download/v2.7.0/hadolint-Linux-x86_64"
+#           chmod +x hadolint
+          
+      - uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+          fail_on: failure-threshold info
+          
       -
         name: Build and push
         uses: docker/build-push-action@v2
@@ -30,17 +40,3 @@ jobs:
           push: false
           tags: docker.io/my-organization/my-app:${{ github.sha }}
           
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
-        with:
-          image-ref: 'docker.io/my-organization/my-app:${{ github.sha }}'
-          format: 'sarif'
-          # template: '@/contrib/sarif.tpl'
-          output: 'results.sarif'
-          severity: 'CRITICAL,HIGH'
-
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v2
-        if: always()
-        with:
-          sarif_file: 'results.sarif'
