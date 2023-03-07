@@ -19,9 +19,7 @@ jobs:
         uses: actions/checkout@v3
         
           
-      - uses: hadolint/hadolint-action@v3.1.0
-        with:
-          dockerfile: Dockerfile
-          failure-threshold: info
+      - name: hadolint linting
+        run: docker run --rm -i -v /.hadolint.yaml:/.config/hadolint.yaml hadolint/hadolint < Dockerfile
 
           
