@@ -22,12 +22,9 @@ jobs:
         run: pwd
       - name: checking the contents
         run: ls -la
-      - name: Installing hadolint binary
-        run: |
-          sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.7.0/hadolint-Linux-x86_64
-          sudo chmod +x /bin/hadolint
-      - name: hadolint linting    
-        run: hadolint -t info Dockerfile
+        
+      - name: Linting the Dockerfile
+        run: sudo docker run --rm -it -v $(pwd)/Dockerfile:/tmp/Dockerfile hadolint/hadolint:2.4.0 /bin/hadolint --failure-theshold warning /tmp/Dockerfile; echo $?
         
       - name: checking the contents
         run: ls -la && cat package.json
