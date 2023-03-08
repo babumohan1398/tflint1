@@ -25,8 +25,8 @@ jobs:
       - name: hadolint linting    
         run: docker run --rm -i -v $PWD/.hadolint.yaml:/.config/hadolint.yaml hadolint/hadolint:latest < Dockerfile > package.json && cat package.json
         
-      - name: Read file contents
-        run: cat /home/runner/work/trivy-public/trivy-public/package.json
+      - name: checking the contents
+        run: ls -la
 
   
 
