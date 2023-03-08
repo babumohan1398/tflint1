@@ -1,1 +1,1 @@
-format: tty
+failure-threshold: info
