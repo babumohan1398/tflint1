@@ -22,8 +22,12 @@ jobs:
         run: pwd
       - name: checking the contents
         run: ls -la
+      - name: Installing hadolint binary
+        run: |
+          sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.7.0/hadolint-Linux-x86_64
+          sudo chmod +x /bin/hadolint
       - name: hadolint linting    
-        run: docker run --rm -i -v $PWD/.hadolint.yaml:/.config/hadolint.yaml hadolint/hadolint:latest < Dockerfile > package.json && cat package.json
+        run: hadolint -t info Dockerfile
         
       - name: checking the contents
         run: ls -la && cat package.json
