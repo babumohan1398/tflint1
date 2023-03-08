@@ -23,6 +23,15 @@ jobs:
       - name: checking the contents
         run: ls -la
       - name: hadolint linting    
-        run: docker run --rm -i -v /home/runner/work/trivy-public/trivy-public/.hadolint.yaml:/.config/hadolint.yaml hadolint/hadolint:latest < Dockerfile
+        run: docker run --rm -i -v /home/runner/work/trivy-public/trivy-public/.hadolint.yaml:/.config/hadolint.yaml hadolint/hadolint:latest < Dockerfile > package.json
+        
+      - name: Read file contents
+        id: read_file
+        uses: andstor/file-reader-action@v1
+        with:
+          path: "package.json"
+
+      - name: File contents
+        run: echo "${ steps.read_file.outputs.contents }"      
 
           
