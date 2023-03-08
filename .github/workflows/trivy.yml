@@ -22,7 +22,7 @@ jobs:
         run: pwd
       - name: checking the contents
         run: ls -la
-      - name: hadolint linting
-        run: docker run --rm -i -v /.hadolint.yaml:/.config/hadolint.yaml hadolint/hadolint:latest < Dockerfile
+      - name: hadolint linting    
+        run: docker run --rm -i -v /home/runner/work/trivy-public/trivy-public/.hadolint.yaml:/.config/hadolint.yaml hadolint/hadolint:latest < Dockerfile
 
           
