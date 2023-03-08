@@ -17,7 +17,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        
+
+      - name: checking the dir
+        uses: pwd
           
       - name: hadolint linting
         run: docker run --rm -i -v /.hadolint.yaml:/.config/hadolint.yaml hadolint/hadolint:latest < Dockerfile
