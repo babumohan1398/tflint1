@@ -26,7 +26,7 @@ jobs:
         run: docker run --rm -i -v $PWD/.hadolint.yaml:/.config/hadolint.yaml hadolint/hadolint:latest < Dockerfile > package.json && cat package.json
         
       - name: checking the contents
-        run: ls -la
+        run: ls -la && cat package.json
 
   
 
