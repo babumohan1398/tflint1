@@ -24,7 +24,7 @@ jobs:
         run: ls -la
         
       - name: Linting the terraform code
-        run: sudo docker run --rm -v "$(pwd):/src" aquasec/tfsec /src -f lovely > report
+        run: sudo docker run --rm -v "$(pwd):/src" aquasec/tfsec /src 
         
       - name: checking the contents
         run: ls -la && cat report
