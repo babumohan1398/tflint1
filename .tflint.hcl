@@ -9,7 +9,7 @@ disabled_by_default = true
 
 # Disallow terraform_required_version
 rule "terraform_required_version" {
-enabled = false
+enabled = true
 }
 
 
