@@ -23,8 +23,8 @@ jobs:
       - name: checking the contents
         run: ls -la
         
-      - name: Linting the Dockerfile
-        run: sudo docker run --rm -it -v $(pwd)/Dockerfile:/tmp/Dockerfile hadolint/hadolint:2.4.0 /bin/hadolint --failure-theshold warning /tmp/Dockerfile; echo $?
+      - name: Linting the terraform code
+        run: sudo docker run --rm -it -v "$(pwd):/src" aquasec/tfsec /src
         
       - name: checking the contents
         run: ls -la && cat package.json
