@@ -3,4 +3,4 @@
 #   - aws-ec2-enforce-http-token-imds
 severity_overrides:
   aws-ec2-enable-at-rest-encryption: MEDIUM
-
+minimum_severity: CRITICAL
