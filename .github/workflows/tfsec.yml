@@ -26,8 +26,8 @@ jobs:
       - name: Linting the terraform code
         run: sudo docker run --rm -v "$(pwd):/src" aquasec/tfsec /src 
         
-      - name: checking the contents
-        run: ls -la && cat report
+#       - name: checking the contents
+#         run: ls -la && cat report
 
   
 
