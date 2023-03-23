@@ -1,7 +1,7 @@
 config {
 #Enables module inspection
 module = false
-force = false
+force = true
 # varfile = ["variables.tf"]
 format = "default"
 # disabled_by_default = true
