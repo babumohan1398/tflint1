@@ -24,10 +24,10 @@ jobs:
         run: ls -la
         
       - name: Linting the terraform code
-        run: sudo docker run --rm -v "$(pwd):/src" aquasec/tfsec /src 
+        run: docker run --rm -v $(pwd):/data -t ghcr.io/terraform-linters/tflint --minimum-failure-severity=warning --format=json > report.json 
         
-#       - name: checking the contents
-#         run: ls -la && cat report
+      - name: checking the contents
+        run: ls -la && cat report
 
   
 
